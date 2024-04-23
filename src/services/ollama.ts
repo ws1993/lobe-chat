@@ -3,21 +3,44 @@ import { ListResponse, Ollama as OllamaBrowser, ProgressResponse } from 'ollama/
 import { createErrorResponse } from '@/app/api/errorResponse';
 import { ModelProvider } from '@/libs/agent-runtime';
 import { useGlobalStore } from '@/store/global';
-import { modelProviderSelectors } from '@/store/global/selectors';
+import { modelConfigSelectors } from '@/store/global/selectors';
 import { ChatErrorType } from '@/types/fetch';
 import { getMessageError } from '@/utils/fetch';
 
 const DEFAULT_BASE_URL = 'http://127.0.0.1:11434/v1';
 
-class OllamaService {
+interface OllamaServiceParams {
+  fetch?: typeof fetch;
+}
+
+export class OllamaService {
+  private _host: string;
+  private _client: OllamaBrowser;
+  private _fetch?: typeof fetch;
+
+  constructor(params: OllamaServiceParams = {}) {
+    this._host = this.getHost();
+    this._fetch = params.fetch;
+    this._client = new OllamaBrowser({ fetch: params?.fetch, host: this._host });
+  }
+
   getHost = (): string => {
-    const endpoint = modelProviderSelectors.ollamaProxyUrl(useGlobalStore.getState());
-    const url = new URL(endpoint || DEFAULT_BASE_URL);
+    const config = modelConfigSelectors.ollamaConfig(useGlobalStore.getState());
+
+    const url = new URL(config.endpoint || DEFAULT_BASE_URL);
     return url.host;
   };
 
   getOllamaClient = () => {
-    return new OllamaBrowser({ host: this.getHost() });
+    if (this.getHost() !== this._host) {
+      this._host = this.getHost();
+      this._client = new OllamaBrowser({ fetch: this._fetch, host: this.getHost() });
+    }
+    return this._client;
+  };
+
+  abort = () => {
+    this._client.abort();
   };
 
   pullModel = async (model: string): Promise<AsyncGenerator<ProgressResponse>> => {

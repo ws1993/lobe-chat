@@ -9,6 +9,7 @@ import { MORE_MODEL_PROVIDER_REQUEST_URL } from '@/const/url';
 
 import Footer from '../features/Footer';
 import Anthropic from './Anthropic';
+import Azure from './Azure';
 import Bedrock from './Bedrock';
 import Google from './Google';
 import Groq from './Groq';
@@ -22,26 +23,26 @@ import TogetherAI from './TogetherAI';
 import ZeroOne from './ZeroOne';
 import Zhipu from './Zhipu';
 
-export default memo<{ showOllama: boolean }>(({ showOllama }) => {
+export default memo(() => {
   const { t } = useTranslation('setting');
 
   return (
     <>
       <PageTitle title={t('tab.llm')} />
       <OpenAI />
-      {/*<AzureOpenAI />*/}
-      {showOllama && <Ollama />}
-      <Anthropic />
+      <Azure />
+      <Ollama />
       <Google />
-      <Groq />
+      <Anthropic />
       <Bedrock />
+      <OpenRouter />
+      <TogetherAI />
+      <Groq />
       <Perplexity />
       <Mistral />
-      <OpenRouter />
       <Moonshot />
-      <ZeroOne />
       <Zhipu />
-      <TogetherAI />
+      <ZeroOne />
       <Footer>
         <Trans i18nKey="llm.waitingForMore" ns={'setting'}>
           更多模型正在
