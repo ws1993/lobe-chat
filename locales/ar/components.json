@@ -68,6 +68,22 @@
   "GoBack": {
     "back": "عودة"
   },
+  "ImageUpload": {
+    "actions": {
+      "changeImage": "انقر لتغيير الصورة"
+    },
+    "placeholder": {
+      "primary": "إضافة صورة",
+      "secondary": "انقر للتحميل"
+    }
+  },
+  "KeyValueEditor": {
+    "addButton": "إضافة صف جديد",
+    "deleteTooltip": "حذف",
+    "duplicateKeyError": "يجب أن يكون اسم المفتاح فريدًا",
+    "keyPlaceholder": "المفتاح",
+    "valuePlaceholder": "القيمة"
+  },
   "MaxTokenSlider": {
     "unlimited": "غير محدود"
   },
@@ -76,6 +92,7 @@
       "custom": "نموذج مخصص، الإعداد الافتراضي يدعم الاستدعاء الوظيفي والتعرف البصري، يرجى التحقق من قدرة النموذج على القيام بذلك بناءً على الحالة الفعلية",
       "file": "يدعم هذا النموذج قراءة وتعرف الملفات المرفوعة",
       "functionCall": "يدعم هذا النموذج استدعاء الوظائف",
+      "imageOutput": "يدعم هذا النموذج إنشاء الصور",
       "reasoning": "يدعم هذا النموذج التفكير العميق",
       "search": "يدعم هذا النموذج البحث عبر الإنترنت",
       "tokens": "يدعم هذا النموذج حتى {{tokens}} رمزًا في جلسة واحدة",
@@ -87,9 +104,33 @@
     "emptyModel": "لا توجد نماذج ممكن تمكينها، يرجى الانتقال إلى الإعدادات لتمكينها",
     "emptyProvider": "لا توجد مزودات مفعلة، يرجى الذهاب إلى الإعدادات لتفعيلها",
     "goToSettings": "اذهب إلى الإعدادات",
-    "provider": "مزود"
+    "provider": "مزود",
+    "title": "نموذج"
+  },
+  "MultiImagesUpload": {
+    "actions": {
+      "uploadMore": "انقر لتحميل المزيد"
+    },
+    "modal": {
+      "complete": "اكتمل",
+      "newFileIndicator": "جديد",
+      "selectImageToPreview": "يرجى اختيار صورة للمعاينة",
+      "title": "إدارة الصور ({{count}})",
+      "upload": "تحميل الصور"
+    },
+    "placeholder": {
+      "primary": "انقر لتحميل الصور",
+      "secondary": "يدعم اختيار عدة صور"
+    },
+    "progress": {
+      "uploadingWithCount": "تم تحميل {{completed}} من أصل {{total}}"
+    }
   },
   "OllamaSetupGuide": {
+    "action": {
+      "close": "إغلاق الإشعار",
+      "start": "تم التثبيت والتشغيل، ابدأ المحادثة"
+    },
     "cors": {
       "description": "بسبب قيود أمان المتصفح، تحتاج إلى تكوين CORS لـ Ollama لاستخدامه بشكل صحيح.",
       "linux": {

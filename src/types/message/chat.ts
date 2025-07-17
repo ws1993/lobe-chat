@@ -1,12 +1,13 @@
 import { IPluginErrorType } from '@lobehub/chat-plugin-sdk';
 
-import { ILobeAgentRuntimeErrorType } from '@/libs/agent-runtime';
+import { ILobeAgentRuntimeErrorType } from '@/libs/model-runtime';
 import { ErrorType } from '@/types/fetch';
 import { MetaData } from '@/types/meta';
 import { MessageSemanticSearchChunk } from '@/types/rag';
 import { GroundingSearch } from '@/types/search';
 
 import { MessageMetadata, MessageRoleType, ModelReasoning } from './base';
+import { ChatImageItem } from './image';
 import { ChatPluginPayload, ChatToolPayload } from './tools';
 import { Translate } from './translate';
 
@@ -30,16 +31,11 @@ export interface ChatTTS {
 }
 
 export interface ChatFileItem {
+  content?: string;
   fileType: string;
   id: string;
   name: string;
   size: number;
-  url: string;
-}
-
-export interface ChatImageItem {
-  alt: string;
-  id: string;
   url: string;
 }
 

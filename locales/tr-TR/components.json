@@ -68,6 +68,22 @@
   "GoBack": {
     "back": "Geri dön"
   },
+  "ImageUpload": {
+    "actions": {
+      "changeImage": "Resmi değiştirmek için tıklayın"
+    },
+    "placeholder": {
+      "primary": "Resim ekle",
+      "secondary": "Yüklemek için tıklayın"
+    }
+  },
+  "KeyValueEditor": {
+    "addButton": "Yeni bir satır ekle",
+    "deleteTooltip": "Sil",
+    "duplicateKeyError": "Anahtar adı benzersiz olmalıdır",
+    "keyPlaceholder": "Anahtar",
+    "valuePlaceholder": "Değer"
+  },
   "MaxTokenSlider": {
     "unlimited": "Sınırsız"
   },
@@ -76,6 +92,7 @@
       "custom": "Özel model, varsayılan olarak hem fonksiyon çağrısını hem de görüntü tanımayı destekler, yukarıdaki yeteneklerin kullanılabilirliğini doğrulamak için lütfen gerçek durumu kontrol edin",
       "file": "Bu model dosya yükleme ve tanımayı destekler",
       "functionCall": "Bu model fonksiyon çağrısını destekler",
+      "imageOutput": "Bu model resim oluşturmayı destekler",
       "reasoning": "Bu model derin düşünmeyi destekler",
       "search": "Bu model çevrimiçi aramayı destekler",
       "tokens": "Bu model tek bir oturumda en fazla {{tokens}} Token destekler",
@@ -87,9 +104,33 @@
     "emptyModel": "Etkinleştirilmiş model bulunmamaktadır, lütfen ayarlara giderek açın",
     "emptyProvider": "Etkinleştirilmiş bir sağlayıcı yok, lütfen ayarlara gidin",
     "goToSettings": "Ayrıntılara git",
-    "provider": "Sağlayıcı"
+    "provider": "Sağlayıcı",
+    "title": "Model"
+  },
+  "MultiImagesUpload": {
+    "actions": {
+      "uploadMore": "Daha fazla yüklemek için tıklayın"
+    },
+    "modal": {
+      "complete": "Tamamla",
+      "newFileIndicator": "Yeni",
+      "selectImageToPreview": "Önizlemek için resim seçin",
+      "title": "Resimleri Yönet ({{count}})",
+      "upload": "Resim Yükle"
+    },
+    "placeholder": {
+      "primary": "Resim yüklemek için tıklayın",
+      "secondary": "Birden fazla resim seçimi desteklenir"
+    },
+    "progress": {
+      "uploadingWithCount": "{{completed}}/{{total}} yüklendi"
+    }
   },
   "OllamaSetupGuide": {
+    "action": {
+      "close": "Uyarıyı Kapat",
+      "start": "Yüklendi ve çalışıyor, sohbete başla"
+    },
     "cors": {
       "description": "Tarayıcı güvenlik kısıtlamaları nedeniyle, Ollama'yı düzgün bir şekilde kullanabilmek için çapraz alan yapılandırması yapmanız gerekmektedir.",
       "linux": {

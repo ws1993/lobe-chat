@@ -1,3 +1,6 @@
+import { ChatMessageError } from '@/types/message/chat';
+import { ChatImageItem } from '@/types/message/image';
+import { ChatToolPayload, MessageToolCall } from '@/types/message/tools';
 import { GroundingSearch } from '@/types/search';
 
 export interface CitationItem {
@@ -23,11 +26,16 @@ export interface ModelTokensUsage {
    */
   inputCitationTokens?: number;
   /**
+   * user prompt image
+   */
+  inputImageTokens?: number;
+  /**
    * user prompt input
    */
   inputTextTokens?: number;
   inputWriteCacheTokens?: number;
   outputAudioTokens?: number;
+  outputImageTokens?: number;
   outputReasoningTokens?: number;
   outputTextTokens?: number;
   rejectedPredictionTokens?: number;
@@ -36,8 +44,16 @@ export interface ModelTokensUsage {
   totalTokens?: number;
 }
 
+export interface ModelSpeed {
+  // tokens per second
+  tps?: number;
+  // time to fist token
+  ttft?: number;
+}
+
 export interface MessageMetadata extends ModelTokensUsage {
   tps?: number;
+  ttft?: number;
 }
 
 export type MessageRoleType = 'user' | 'system' | 'assistant' | 'tool';
@@ -61,7 +77,6 @@ export interface MessageItem {
   search: GroundingSearch | null;
   sessionId: string | null;
   threadId: string | null;
-  // jsonb type
   tools: any | null;
   topicId: string | null;
   // jsonb type
@@ -95,4 +110,25 @@ export interface NewMessage {
   // optional because it's generated
   updatedAt?: Date;
   userId: string; // optional because it's generated
+}
+
+export interface UpdateMessageParams {
+  content?: string;
+  error?: ChatMessageError | null;
+  imageList?: ChatImageItem[];
+  metadata?: MessageMetadata;
+  model?: string;
+  provider?: string;
+  reasoning?: ModelReasoning;
+  role?: string;
+  search?: GroundingSearch;
+  toolCalls?: MessageToolCall[];
+  tools?: ChatToolPayload[] | null;
+}
+
+export interface NewMessageQueryParams {
+  embeddingsId: string;
+  messageId: string;
+  rewriteQuery: string;
+  userQuery: string;
 }

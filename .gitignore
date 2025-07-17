@@ -11,6 +11,7 @@
 venv
 temp
 tmp
+.windsurfrules
 
 # dependencies
 node_modules
@@ -42,6 +43,7 @@ test-output
 
 # misc
 # add other ignore file below
+CLAUDE.md
 
 # local env files
 .env*.local
@@ -69,3 +71,8 @@ public/swe-worker*
 *.pdf
 vertex-ai-key.json
 .pnpm-store
+./packages/lobe-ui
+
+
+# for local prd docs
+docs/prd

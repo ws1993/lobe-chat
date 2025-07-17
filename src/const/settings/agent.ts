@@ -1,6 +1,5 @@
 import { DEFAULT_AGENT_META } from '@/const/meta';
-import { DEFAULT_MODEL } from '@/const/settings/llm';
-import { ModelProvider } from '@/libs/agent-runtime';
+import { DEFAULT_MODEL, DEFAULT_PROVIDER } from '@/const/settings/llm';
 import { LobeAgentChatConfig, LobeAgentConfig, LobeAgentTTSConfig } from '@/types/agent';
 import { UserDefaultAgent } from '@/types/user/settings';
 
@@ -15,7 +14,7 @@ export const DEFAUTT_AGENT_TTS_CONFIG: LobeAgentTTSConfig = {
 
 export const DEFAULT_AGENT_SEARCH_FC_MODEL = {
   model: DEFAULT_MODEL,
-  provider: ModelProvider.OpenAI,
+  provider: DEFAULT_PROVIDER,
 };
 
 export const DEFAULT_AGENT_CHAT_CONFIG: LobeAgentChatConfig = {
@@ -25,7 +24,7 @@ export const DEFAULT_AGENT_CHAT_CONFIG: LobeAgentChatConfig = {
   enableCompressHistory: true,
   enableHistoryCount: true,
   enableReasoning: false,
-  historyCount: 8,
+  historyCount: 20,
   reasoningBudgetToken: 1024,
   searchFCModel: DEFAULT_AGENT_SEARCH_FC_MODEL,
   searchMode: 'off',
@@ -34,6 +33,7 @@ export const DEFAULT_AGENT_CHAT_CONFIG: LobeAgentChatConfig = {
 export const DEFAULT_AGENT_CONFIG: LobeAgentConfig = {
   chatConfig: DEFAULT_AGENT_CHAT_CONFIG,
   model: DEFAULT_MODEL,
+  openingQuestions: [],
   params: {
     frequency_penalty: 0,
     presence_penalty: 0,
@@ -41,7 +41,7 @@ export const DEFAULT_AGENT_CONFIG: LobeAgentConfig = {
     top_p: 1,
   },
   plugins: [],
-  provider: ModelProvider.OpenAI,
+  provider: DEFAULT_PROVIDER,
   systemRole: '',
   tts: DEFAUTT_AGENT_TTS_CONFIG,
 };
