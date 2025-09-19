@@ -50,6 +50,92 @@ const qwenChatModels: AIChatModelCard[] = [
   },
   {
     abilities: {
+      reasoning: true,
+    },
+    contextWindowTokens: 131_072,
+    description: 'GLM-4.5系列模型是智谱AI专为智能体设计的混合推理模型，提供思考与非思考两种模式。',
+    displayName: 'GLM-4.5',
+    id: 'glm-4.5',
+    maxOutput: 16_384,
+    pricing: {
+      currency: 'CNY',
+      units: [
+        {
+          lookup: {
+            prices: {
+              '[0, 32_000]': 3,
+              '[32_000, infinity]': 4,
+            },
+            pricingParams: ['textInputRange'],
+          },
+          name: 'textInput',
+          strategy: 'lookup',
+          unit: 'millionTokens',
+        },
+        {
+          lookup: {
+            prices: {
+              '[0, 32_000]': 14,
+              '[32_000, infinity]': 16,
+            },
+            pricingParams: ['textInputRange'],
+          },
+          name: 'textOutput',
+          strategy: 'lookup',
+          unit: 'millionTokens',
+        },
+      ],
+    },
+    settings: {
+      extendParams: ['enableReasoning', 'reasoningBudgetToken'],
+    },
+    type: 'chat',
+  },
+  {
+    abilities: {
+      reasoning: true,
+    },
+    contextWindowTokens: 131_072,
+    description: 'GLM-4.5系列模型是智谱AI专为智能体设计的混合推理模型，提供思考与非思考两种模式。',
+    displayName: 'GLM-4.5-Air',
+    id: 'glm-4.5-air',
+    maxOutput: 16_384,
+    pricing: {
+      currency: 'CNY',
+      units: [
+        {
+          lookup: {
+            prices: {
+              '[0, 32_000]': 0.8,
+              '[32_000, infinity]': 1.2,
+            },
+            pricingParams: ['textInputRange'],
+          },
+          name: 'textInput',
+          strategy: 'lookup',
+          unit: 'millionTokens',
+        },
+        {
+          lookup: {
+            prices: {
+              '[0, 32_000]': 6,
+              '[32_000, infinity]': 8,
+            },
+            pricingParams: ['textInputRange'],
+          },
+          name: 'textOutput',
+          strategy: 'lookup',
+          unit: 'millionTokens',
+        },
+      ],
+    },
+    settings: {
+      extendParams: ['enableReasoning', 'reasoningBudgetToken'],
+    },
+    type: 'chat',
+  },
+  {
+    abilities: {
       functionCall: true,
     },
     config: {
@@ -583,7 +669,7 @@ const qwenChatModels: AIChatModelCard[] = [
       search: true,
     },
     config: {
-      deploymentName: 'qwen-plus-2025-07-28',
+      deploymentName: 'qwen-plus-2025-09-11',
     },
     contextWindowTokens: 1_000_000,
     description: '通义千问超大规模语言模型增强版，支持中文、英文等不同语言输入。',
@@ -627,7 +713,6 @@ const qwenChatModels: AIChatModelCard[] = [
               '[0, 128_000]_[false]': 2,
               '[0, 128_000]_[true]': 8,
               '[128_000, 256_000]_[false]': 20,
-
               '[128_000, 256_000]_[true]': 24,
               '[256_000, infinity]_[false]': 48,
               '[256_000, infinity]_[true]': 64,
@@ -663,6 +748,7 @@ const qwenChatModels: AIChatModelCard[] = [
     id: 'qwen3-max-preview',
     maxOutput: 32_768,
     organization: 'Qwen',
+    /* eslint-disable sort-keys-fix/sort-keys-fix */
     pricing: {
       currency: 'CNY',
       units: [
@@ -707,6 +793,7 @@ const qwenChatModels: AIChatModelCard[] = [
         },
       ],
     },
+    /* eslint-enable sort-keys-fix/sort-keys-fix */
     releasedAt: '2025-09-05',
     settings: {
       searchImpl: 'params',
@@ -1473,6 +1560,29 @@ const qwenChatModels: AIChatModelCard[] = [
 ];
 
 const qwenImageModels: AIImageModelCard[] = [
+  {
+    description:
+      'Qwen Image Edit 是一款图生图模型，支持基于输入图像和文本提示进行图像编辑和修改，能够根据用户需求对原图进行精准调整和创意改造。',
+    displayName: 'Qwen Image Edit',
+    enabled: true,
+    id: 'qwen-image-edit',
+    organization: 'Qwen',
+    parameters: {
+      imageUrl: {
+        default: '',
+      },
+      prompt: {
+        default: '',
+      },
+      seed: { default: null },
+    },
+    pricing: {
+      currency: 'USD',
+      units: [{ name: 'imageGeneration', rate: 0.041, strategy: 'fixed', unit: 'image' }],
+    },
+    releasedAt: '2025-09-18',
+    type: 'image',
+  },
   {
     description:
       'Qwen-Image 是一款通用图像生成模型，支持多种艺术风格，尤其擅长复杂文本渲染，特别是中英文文本渲染。模型支持多行布局、段落级文本生成以及细粒度细节刻画，可实现复杂的图文混合布局设计。',
